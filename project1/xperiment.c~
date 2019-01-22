@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+#include "array_util.h"
+#include "sorts.h"
+
+void
+Exp1() {
+  printf("Exp1!");
+  return;
+}
+void
+Exp2() {
+  printf("Exp2!");
+  return;
+}
+void
+Exp3() {
+  return;
+}
+void
+Exp4() {
+  return;
+}
+/*
+int
+ttest(void (*f)(int,int)) {
+  int vor=get_time_millis();
+  (*f)(int arr[],int n);
+  int nach=get+time+millis();
+  return nach-vor;
+  }
+*/
+void
+main() {
+  int i,j,comparisons;
+  int t = 1;
+  int arr[500000];
+  int arr2[500000];
+  int sizes[] = {10, 50, 100, 150, 500, 10000, 15000, 20000, 25000,
+		 30000, 35000, 40000, 45000, 50000};
+  while (t != 0) {
+    printf("Zero to exit\nExperiment 1: Running Time v. Comparisons Correlation\nExperiment 2: Estimate of O(n)\nExperiment 3: Variance of Controlled Tests\nExperiment 4: Same array Noise\nEnter integer number of desired Experiment:");
+    scanf("%d", t);
+    if (t==1)
+      Exp1();
+    if (t==2)
+      Exp2();
+    if (t==3)
+      Exp3();
+    if (t==4)
+      Exp4();
+    else
+      printf("Incorrect - Reenter/n");
+  }
+}

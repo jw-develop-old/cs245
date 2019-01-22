@@ -1,0 +1,4 @@
+functiondriver.o: functiondriver.c function.h polynomial.h
+polynomial.o: polynomial.c function.h polynomial.h
+step.o: step.c function.h step.h polynomial.h
+exponential.o: exponential.c function.h exponential.h
