@@ -1,0 +1,31 @@
+package calc;
+import java.awt.event.ActionListener;
+public class SetUp {
+	private static CalculatorFace one_face;
+	private static Internal internal;
+	public static void setUpCalculator(CalculatorFace face) {
+		one_face = face;
+		internal = new Internal();
+		addB('C',e -> internal.fullyClear());
+		addB('.',e -> internal.dot());
+		addB('=',e -> internal.equals());
+		addB(CalculatorFace.PLUS_MINUS,e -> internal.plusMinus());
+		addB('+',(a,b) -> a+b );
+		addB('-',(a,b) -> a-b );
+		addB('*',(a,b) -> a*b );
+		addB('/',(a,b) -> a/b );
+		for (int i=0;i<10;i++) {
+			final int toadd = i;
+			addB(i,e -> internal.inputNumber(toadd));
+		}
+	}
+	public static CalculatorFace getFace() {return one_face;}
+	private static void addB(char arg, ActionListener action)
+		{one_face.addActionListener(arg,action);}
+	private static void addB(char arg, Internal.Operator op)
+		{one_face.addActionListener(arg,e->internal.operand(op));}
+	private static void addB(int arg, ActionListener action) 
+		{one_face.addNumberActionListener(arg,action);}
+	public static void main(String[] args) {
+		setUpCalculator(new PlainCalculatorFace());}
+}
